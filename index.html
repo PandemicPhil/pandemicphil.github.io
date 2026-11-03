@@ -1,0 +1,147 @@
+<!doctype html>
+<!--
+  HURDLE JUMP download page - what the QR code opens.
+  Hosted free on GitHub Pages (repository pandemicphil.github.io) with privacy-policy.html: https://pandemicphil.github.io/
+  Everything in this site/ folder (except the QR images) is what goes in that repository.
+  When the game is live, paste the store links into APP_STORE_URL / PLAY_STORE_URL below - the buttons
+  switch from "Coming soon" to "Download" by themselves. The QR code never needs reprinting.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hurdle Jump</title>
+<meta name="description" content="Hurdle Jump - jump, roll and race your friends. Get it on iPhone and Android.">
+<meta property="og:title" content="Hurdle Jump">
+<meta property="og:description" content="Jump. Roll. Win. Get Hurdle Jump on iPhone and Android.">
+<meta property="og:image" content="hurdle-jump-icon.png">
+<link rel="icon" href="hurdle-jump-icon.png">
+<link rel="apple-touch-icon" href="hurdle-jump-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0c1430;
+    --navy2: #27365c;
+    --panel: #1e2a44;
+    --outline: #1a1420;
+    --yellow: #ffd23a;
+    --orange: #ff6a3a;
+    --green: #4cc94c;
+    --blue: #3a86f0;
+    --grey: #8a939d;
+    --text: #ffffff;
+    --soft: #bfe3ff;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background: linear-gradient(180deg, var(--navy), var(--navy2));
+    color: var(--text);
+    font-family: "Anton", Impact, "Arial Black", sans-serif;
+    letter-spacing: 0.5px;
+    display: flex; justify-content: center;
+    padding: 28px 16px 40px;
+  }
+  main { width: 100%; max-width: 440px; text-align: center; }
+  .icon {
+    width: 132px; height: 132px; border-radius: 30px;
+    border: 5px solid var(--outline); box-shadow: 0 6px 0 rgba(0,0,0,.35);
+    image-rendering: pixelated; background: #5fb4ff;
+  }
+  h1 {
+    margin: 18px 0 0; line-height: .95; font-size: 64px; font-weight: 400;
+    text-shadow: -4px -4px 0 var(--outline), 4px -4px 0 var(--outline), -4px 4px 0 var(--outline), 4px 4px 0 var(--outline), 0 7px 0 var(--outline);
+  }
+  h1 .a { color: var(--yellow); }
+  h1 .b { color: var(--orange); }
+  .tag { margin: 10px 0 26px; font-size: 22px; color: var(--soft); }
+  .btn {
+    display: block; text-decoration: none; color: var(--text);
+    border: 4px solid var(--outline); border-radius: 18px;
+    padding: 14px 18px; margin: 0 0 16px;
+    box-shadow: 0 6px 0 var(--outline);
+    transition: transform .08s;
+  }
+  .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--outline); }
+  .btn .small { display: block; font-size: 16px; opacity: .85; font-family: Arial, sans-serif; font-weight: 700; letter-spacing: 0; }
+  .btn .big { display: block; font-size: 30px; line-height: 1.15; }
+  .apple { background: var(--blue); }
+  .android { background: var(--green); }
+  .soon { background: var(--panel); color: var(--soft); cursor: default; box-shadow: 0 6px 0 var(--outline); }
+  .soon:active { transform: none; box-shadow: 0 6px 0 var(--outline); }
+  .mine { outline: 4px solid var(--yellow); outline-offset: 3px; }
+  .note { font-family: Arial, sans-serif; font-size: 15px; color: var(--soft); margin: 4px 0 26px; line-height: 1.4; }
+  .web { background: var(--orange); }
+  footer { font-family: Arial, sans-serif; font-size: 13px; color: var(--grey); margin-top: 26px; line-height: 1.8; }
+  footer a { color: var(--soft); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="hurdle-jump-icon.png" alt="Hurdle Jump icon - Tim jumping a hurdle">
+  <h1><span class="a">HURDLE</span><br><span class="b">JUMP!</span></h1>
+  <p class="tag">Jump. Roll. Win.</p>
+
+  <a id="apple" class="btn apple" href="#">
+    <span class="small">iPhone &amp; iPad</span>
+    <span class="big">APP STORE</span>
+  </a>
+  <a id="android" class="btn android" href="#">
+    <span class="small">Android</span>
+    <span class="big">GOOGLE PLAY</span>
+  </a>
+  <p id="note" class="note"></p>
+
+  <a id="web" class="btn web" href="#" hidden>
+    <span class="small">No download - play in your browser</span>
+    <span class="big">PLAY ON THE WEB</span>
+  </a>
+
+  <footer>
+    <a href="privacy-policy.html">Privacy policy</a> &nbsp;·&nbsp;
+    <a href="mailto:gamesmadebyphil@gmail.com">Contact us</a><br>
+    &copy; 2026 Philip Casper
+  </footer>
+</main>
+<script>
+  // Paste the store links here once the game is live ("" = not out yet: the button says COMING SOON).
+  const APP_STORE_URL = "";
+  const PLAY_STORE_URL = "";
+  // Optional: a web version to play right away (e.g. the itch.io page). "" hides the button.
+  const WEB_URL = "";
+
+  function setUp(id, url) {
+    const b = document.getElementById(id);
+    if (url) {
+      b.href = url;
+    } else {
+      b.removeAttribute("href");
+      b.classList.add("soon");
+      b.querySelector(".big").textContent = "COMING SOON";
+    }
+  }
+  setUp("apple", APP_STORE_URL);
+  setUp("android", PLAY_STORE_URL);
+  if (WEB_URL) {
+    const w = document.getElementById("web");
+    w.href = WEB_URL;
+    w.hidden = false;
+  }
+
+  // Highlight the button for the phone that scanned the code.
+  const ua = navigator.userAgent || "";
+  const ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const android = /Android/i.test(ua);
+  if (ios) document.getElementById("apple").classList.add("mine");
+  if (android) document.getElementById("android").classList.add("mine");
+
+  const note = document.getElementById("note");
+  if (!APP_STORE_URL && !PLAY_STORE_URL) {
+    note.textContent = "Coming soon to iPhone and Android - check back soon!";
+  } else if (ios || android) {
+    note.textContent = "Your phone's store is highlighted.";
+  }
+</script>
+</body>
+</html>
